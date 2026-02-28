@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Figtree - body font */
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Plus Jakarta Sans - display font */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* Soft lavender-to-sky pastel palette */
+    --background: 0.97 0.01 285;
+    --foreground: 0.18 0.03 275;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.03 275;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.03 275;
+
+    /* Primary: soft purple/lavender */
+    --primary: 0.55 0.17 285;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary: light lavender tint */
+    --secondary: 0.93 0.04 285;
+    --secondary-foreground: 0.35 0.1 275;
+
+    --muted: 0.94 0.02 285;
+    --muted-foreground: 0.52 0.05 275;
+
+    /* Accent: sky blue tint */
+    --accent: 0.93 0.05 230;
+    --accent-foreground: 0.25 0.1 240;
+
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 1 0 0;
+
+    --border: 0.88 0.04 285;
+    --input: 0.9 0.03 285;
+    --ring: 0.55 0.17 285;
+
+    /* Chart colors */
+    --chart-1: 0.6 0.18 285;
+    --chart-2: 0.65 0.16 210;
+    --chart-3: 0.68 0.15 160;
+    --chart-4: 0.7 0.17 55;
+    --chart-5: 0.62 0.2 25;
+
+    /* Custom pastel card backgrounds */
+    --card-lavender: 0.93 0.06 285;
+    --card-sky: 0.93 0.05 220;
+    --card-mint: 0.93 0.06 160;
+    --card-peach: 0.94 0.06 55;
+
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.18 0.03 275;
+    --sidebar-primary: 0.55 0.17 285;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.93 0.04 285;
+    --sidebar-accent-foreground: 0.35 0.1 275;
+    --sidebar-border: 0.88 0.04 285;
+    --sidebar-ring: 0.55 0.17 285;
+  }
+
+  .dark {
+    --background: 0.14 0.03 285;
+    --foreground: 0.95 0.02 285;
+    --card: 0.19 0.04 285;
+    --card-foreground: 0.95 0.02 285;
+    --popover: 0.22 0.04 285;
+    --popover-foreground: 0.95 0.02 285;
+
+    --primary: 0.72 0.15 285;
+    --primary-foreground: 0.1 0.02 285;
+
+    --secondary: 0.27 0.06 285;
+    --secondary-foreground: 0.92 0.02 285;
+
+    --muted: 0.25 0.04 285;
+    --muted-foreground: 0.65 0.05 285;
+
+    --accent: 0.28 0.07 230;
+    --accent-foreground: 0.92 0.02 240;
+
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.12 0.02 285;
+
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.12 285;
+
+    --chart-1: 0.68 0.2 285;
+    --chart-2: 0.7 0.18 210;
+    --chart-3: 0.72 0.17 160;
+    --chart-4: 0.75 0.19 55;
+    --chart-5: 0.68 0.22 25;
+
+    --card-lavender: 0.25 0.07 285;
+    --card-sky: 0.24 0.07 220;
+    --card-mint: 0.24 0.07 160;
+    --card-peach: 0.25 0.07 55;
+
+    --sidebar: 0.19 0.04 285;
+    --sidebar-foreground: 0.95 0.02 285;
+    --sidebar-primary: 0.72 0.15 285;
+    --sidebar-primary-foreground: 0.1 0.02 285;
+    --sidebar-accent: 0.27 0.06 285;
+    --sidebar-accent-foreground: 0.92 0.02 285;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.65 0.12 285;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-body {
+    font-family: "Figtree", sans-serif;
+  }
+
+  /* Safe area utilities */
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  /* Pastel card backgrounds */
+  .bg-card-lavender {
+    background-color: oklch(var(--card-lavender));
+  }
+
+  .bg-card-sky {
+    background-color: oklch(var(--card-sky));
+  }
+
+  .bg-card-mint {
+    background-color: oklch(var(--card-mint));
+  }
+
+  .bg-card-peach {
+    background-color: oklch(var(--card-peach));
+  }
+
+  /* Gradient backgrounds */
+  .login-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.9 0.07 285) 0%,
+      oklch(0.92 0.06 220) 50%,
+      oklch(0.91 0.05 200) 100%
+    );
+  }
+
+  .dark .login-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.18 0.07 285) 0%,
+      oklch(0.16 0.06 240) 50%,
+      oklch(0.15 0.05 220) 100%
+    );
+  }
+
+  /* Card shadow */
+  .card-shadow {
+    box-shadow: 0 2px 12px rgba(100, 80, 160, 0.1);
+  }
+
+  .dark .card-shadow {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Bottom nav safe area */
+  .bottom-nav-height {
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .content-with-bottom-nav {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  /* Smooth scrolling for mobile */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .print-only {
+      display: block !important;
+    }
+
+    body {
+      background: white !important;
+    }
+  }
+
+  .print-only {
+    display: none;
+  }
+
+  /* Stat card accent colors */
+  .stat-icon-lavender {
+    background-color: oklch(0.88 0.1 285 / 0.3);
+    color: oklch(0.48 0.18 285);
+  }
+
+  .stat-icon-sky {
+    background-color: oklch(0.88 0.09 220 / 0.3);
+    color: oklch(0.45 0.16 220);
+  }
+
+  .stat-icon-mint {
+    background-color: oklch(0.88 0.1 155 / 0.3);
+    color: oklch(0.45 0.15 155);
+  }
+
+  .stat-icon-peach {
+    background-color: oklch(0.88 0.1 55 / 0.3);
+    color: oklch(0.5 0.16 55);
+  }
+
+  /* Input focus ring */
+  .input-ring:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: oklch(var(--primary));
+  }
+
+  /* Badge styles */
+  .badge-low-stock {
+    background-color: oklch(0.95 0.08 25);
+    color: oklch(0.5 0.2 25);
+  }
+
+  .badge-due {
+    background-color: oklch(0.95 0.08 55);
+    color: oklch(0.45 0.18 55);
+  }
+
+  /* Animated gradient orbs for login */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    animation: orb-float 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes orb-float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    33% {
+      transform: translateY(-20px) scale(1.05);
+    }
+    66% {
+      transform: translateY(10px) scale(0.97);
+    }
+  }
+
+  .orb-1 {
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    animation-delay: -2.5s;
+  }
+
+  .orb-3 {
+    animation-delay: -5s;
+  }
+}
